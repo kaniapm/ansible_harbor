@@ -1,0 +1,10 @@
+---
+
+- name: HARBOR REDHAT | Manage Firewalld
+  firewalld:
+    service: "{{ item }}"
+    permanent: yes
+    state: enabled
+  with_items:
+    - http
+    - https

@@ -1,0 +1,15 @@
+# Harbor cluster host or standalone
+[harbor]
+10.0.4.141
+
+# Harbor database host
+[harbor_db_host]
+# Needed for cluster deployment mode not needed in standalone deployment
+
+# Redis queue
+[harbor_redis_host]
+# Needed for cluster deployment mode not needed in standalone deployment
+
+# Clair database host
+[harbor_clair_db_host]
+# Needed when Clair is deployed on Harbor

@@ -1,0 +1,9 @@
+---
+
+- name: HARBOR | Download Offline sources (This may take some time)
+  unarchive:
+    src: "{{ harbor_offline_source_url }}"
+    dest: /opt
+    remote_src: yes
+  args:
+    creates: /opt/harbor

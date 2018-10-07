@@ -1,0 +1,34 @@
+---
+
+- name: HARBOR | Manage Redhat environment
+  include_tasks: redhat.yml
+  when: ansible_os_family == "RedHat"
+
+- name: HARBOR | Manage Offline installation
+  import_tasks: offline.yml
+  when: harbor_offline_installation
+  tags:
+    - update-harbor
+
+- name: HARBOR | Manage Online installation
+  import_tasks: online.yml
+  when: harbor_online_installation
+  tags:
+    - update-harbor
+
+- name: HARBOR | Configuration
+  template:
+    src: opt/harbor/harbor.cfg.j2
+    dest: /opt/harbor/harbor.cfg
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - update-harbor
+    - update-harbor-config
+
+- name: HARBOR | Manage deployment
+  import_tasks: install.yml
+  tags:
+    - update-harbor
+    - update-harbor-config

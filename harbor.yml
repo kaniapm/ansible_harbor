@@ -1,0 +1,10 @@
+---
+
+- hosts: harbor
+  remote_user: vagrant
+  become: yes
+  vars:
+    harbor_offline_installation: true
+    harbor_install_args: "--with-clair --with-chartmuseum" # Example: --with-notary --with-clair --with-chartmuseum
+  roles:
+    - harbor

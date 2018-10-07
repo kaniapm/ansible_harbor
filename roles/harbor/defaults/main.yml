@@ -1,0 +1,91 @@
+---
+
+###
+# HARBOR
+###
+
+# Version
+harbor_version: 1.5.3
+
+# Sources
+harbor_offline_source_url: https://storage.googleapis.com/harbor-releases/harbor-offline-installer-v{{ harbor_version }}.tgz
+harbor_online_source_url: https://storage.googleapis.com/harbor-releases/harbor-online-installer-v{{ harbor_version }}.tgz
+
+# Manage start
+harbor_offline_installation: true
+harbor_online_installation: false
+harbor_install_args: "" # Example: "--with-notary --with-clair --with-chartmuseum"
+
+# Configuration
+harbor_hostname: registry.wikitops.io
+harbor_ui_url_protocol: http # Or : https
+
+# Job Worker
+harbor_max_job_workers: 50
+
+# Certificates
+harbor_customize_crt: on
+harbor_ssl_cert: /data/cert/server.crt
+harbor_ssl_cert_key: /data/cert/server.key
+harbor_secretkey_path: /data
+
+# Admin URL
+harbor_admiral_url: NA
+
+# Log
+harbor_log_rotate_count: 20
+harbor_log_rotate_size: 200M
+
+# Email / SMTP
+harbor_email_identity: ""
+harbor_email_server: smtp.mydomain.com
+harbor_email_port: 25
+harbor_email_username: sample_admin@mydomain.com
+harbor_email_password: abc
+harbor_email_from: admin <sample_admin@mydomain.com>
+harbor_email_ssl: "false"
+harbor_email_insecure: "false"
+
+# Admin Password
+harbor_admin_password: Harbor12345
+harbor_auth_mode: db_auth # Or : ldap_auth
+
+# LDAP
+harbor_ldap_url: ldaps://ldap.mydomain.com
+harbor_ldap_basedn: ou=people,dc=mydomain,dc=com
+harbor_ldap_uid: uid
+harbor_ldap_scope: 2
+harbor_ldap_timeout: 5
+harbor_ldap_verify_cert: "true"
+harbor_ldap_group_basedn: "ou=group,dc=mydomain,dc=com"
+harbor_ldap_group_filter: "objectclass=group"
+harbor_ldap_group_gid: cn
+harbor_ldap_group_scope: 2
+harbor_self_registration: on
+harbor_token_expiration: 30
+
+# Restriction
+harbor_project_creation_restriction: everyone
+
+# Harbor Database
+harbor_db_host: "{{ groups['harbor_db_host'][0] | default('mysql') }}"
+harbor_db_password: root123
+harbor_db_port: 3306
+harbor_db_user: root
+
+# Harbor Redis
+harbor_redis_url: "{{ groups['harbor_redis_host'][0] | default('redis') }}:6379"
+
+# Clair Database
+harbor_clair_db_host: "{{ groups['harbor_clair_db_host'][0] | default('postgres') }}"
+harbor_clair_db_password: password
+harbor_clair_db_port: 5432
+harbor_clair_db_username: postgres
+harbor_clair_db: postgres
+
+# Registry Storage
+harbor_registry_storage_provider_name: filesystem
+harbor_registry_storage_provider_config: "" # Refer to : https://docs.docker.com/registry/configuration/#storage
+
+# Reload Config
+harbor_reload_config: "true"

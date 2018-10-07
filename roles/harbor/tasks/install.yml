@@ -1,0 +1,11 @@
+---
+
+- name: HARBOR | Check Notary prerequisites
+  fail:
+    msg: "ERROR : Harbor has to be started on HTTPS when running with Notary. Please review the configuration."
+  when:
+    - "'--with-notary' in harbor_install_args"
+    - harbor_ui_url_protocol != "https"
+
+- name: HARBOR | Run install script (This may take some time)
+  shell: /opt/harbor/install.sh {{ harbor_install_args }}
