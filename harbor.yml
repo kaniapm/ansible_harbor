@@ -5,6 +5,6 @@
   become: yes
   vars:
     harbor_offline_installation: true
-    harbor_install_args: "--with-clair --with-chartmuseum" # Example: --with-notary --with-clair --with-chartmuseum
+    harbor_install_args: "" # Example: --with-notary --with-clair --with-chartmuseum
   roles:
     - harbor
