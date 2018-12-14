@@ -1,6 +1,6 @@
-# Ansible : Playbook Harbor
+# Ansible : Playbook Epel Repository
 
-The aim of this project is to deploy Harbor on Linux Vagrant instances.
+The aim of this project is to deploy a Epel Repository on a Vagrant CentOS instance.
 
 ## Getting Started
 
@@ -12,12 +12,6 @@ What things you need to run this Ansible playbook :
 
 *   [Vagrant](https://www.vagrantup.com/docs/installation/) must be installed on your computer
 *   Update the Vagrant file based on your computer (CPU, memory), if needed
-*   Update the operating system to deploy in the Vagrant file (default: Ubuntu)
-*   Download the Ansible requirements:
-
-```bash
-$ ansible-galaxy install -r requirements.yml
-```
 
 ### Usage
 
@@ -27,7 +21,7 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 #### Deployment
 
-To deploy Harbor on Vagrant instances, just run this command :
+To deploy Grafana on Vagrant instance, just run this command :
 
 ```bash
 $ vagrant up
@@ -40,10 +34,10 @@ $ vagrant status
 
 Current machine states:
 
-harbor01                   running (virtualbox)
+epel01                   running (virtualbox)
 ```
 
-you should access the Harbor web interface : http://10.0.4.141/
+If everything run as expected, you should access the Epel repository on the Vagrant instance.
 
 #### Destroy
 
@@ -59,15 +53,15 @@ This section list some simple command to use and manage the playbook and the Vag
 
 #### Update with Ansible
 
-To update the Harbor configuration with Ansible, you just have to run the Ansible playbook harbor.yml with this command :
+To update the Epel instance configuration with Ansible, you just have to run the Ansible playbook epel.yml with this command :
 
 ```bash
-$ ansible-playbook harbor.yml
+$ ansible-playbook epel.yml
 ```
 
 #### Update with Vagrant
 
-To update the Harbor configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
+To update the Epel instance configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
 
 ```bash
 $ vagrant provision
@@ -78,7 +72,7 @@ $ vagrant provision
 To be able to connect to a Vagrant instance, you should use the CLI which is configured to automatically use the default SSH key :
 
 ```bash
-$ vagrant ssh harbor01
+$ vagrant ssh epel01
 ```
 
 ## Author

@@ -1,6 +1,6 @@
-# Ansible : Playbook Harbor
+# Ansible : Playbook Pip
 
-The aim of this project is to deploy Harbor on Linux Vagrant instances.
+The aim of this project is to deploy a Pip instance on Vagrant instances.
 
 ## Getting Started
 
@@ -27,7 +27,7 @@ Be aware that you need to be in the Vagrant directory to be able to run the comm
 
 #### Deployment
 
-To deploy Harbor on Vagrant instances, just run this command :
+To deploy Pip on Vagrant instance, just run this command :
 
 ```bash
 $ vagrant up
@@ -40,10 +40,10 @@ $ vagrant status
 
 Current machine states:
 
-harbor01                   running (virtualbox)
+pip01                   running (virtualbox)
 ```
 
-you should access the Harbor web interface : http://10.0.4.141/
+If everything run has expected, you should be able to run pip command on the Vagrant instance.
 
 #### Destroy
 
@@ -59,15 +59,15 @@ This section list some simple command to use and manage the playbook and the Vag
 
 #### Update with Ansible
 
-To update the Harbor configuration with Ansible, you just have to run the Ansible playbook harbor.yml with this command :
+To update the Pip instance configuration with Ansible, you just have to run the Ansible playbook pip.yml with this command :
 
 ```bash
-$ ansible-playbook harbor.yml
+$ ansible-playbook pip.yml
 ```
 
 #### Update with Vagrant
 
-To update the Harbor configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
+To update the Pip instance configuration with Vagrant, you just have to run provisioning part of the Vagrant file :
 
 ```bash
 $ vagrant provision
@@ -78,7 +78,7 @@ $ vagrant provision
 To be able to connect to a Vagrant instance, you should use the CLI which is configured to automatically use the default SSH key :
 
 ```bash
-$ vagrant ssh harbor01
+$ vagrant ssh pip01
 ```
 
 ## Author
